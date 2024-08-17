@@ -14,6 +14,62 @@
         </header>
 
         <main class="container">
+            <div class="unit-search">
+                <div class="form-group">
+                    <h2 class="header">Unit Search 2024</h2>
+                    <label for="input-unitlist">Unit Code</label>
+                    <input type="text" class="form-control" placeholder="Unit code" list="list-unitcode" id="input-unitlist">
+                    <datalist id="list-unitlist">
+                        <option>SIT225</option>
+                        <option>SIT223</option>
+                        <option>SIT307</option>
+                        <option>SIT292</option>
+                    </datalist>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', e => {
+                        $('#input-unitlist').autocomplete()
+                    }, false);
+                </script>
+                <div class="form-group">
+                    <label class = "form-label" for="input-unit-title"> Unit Title </label>
+                    <input type="text" class="form-control" placeholder="Unit title" id="input-unit-title" />
+                </div>
+                
+                <div class="form-group">
+                <label for="input-time-period">Teaching period</label>
+                <select class="form-select" id="input-time-period">
+                    <option value="Trimester-1">Trimester 1</option>
+                    <option value="Trimester-2">Trimester 2</option>
+                    <option value="Trimester-3">Trimester 3</option>
+                </select>
+                </div>    
+                
+                <div class="form-group">
+                <label for="input-study-mode">Study Mode</label>
+                <select class="form-select" id="input-study-mode">
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+                </div>
+                
+                <div class="form-group">
+                <label for="input-location">Location</label>
+                <select class="form-select" id="input-location">
+                    <option value="Burwood">Burwood</option>
+                    <option value="Gift City Campus">Gift City Campus</option>
+                    <option value="Warrnambool">Warrnambool</option>
+                    <option value="Waterfront">Waterfront</option>
+                    <option value="Waurn Ponds">Waurn Ponds</option>
+                </select>
+                </div>
+                <div class="btn-search">
+                    <button class="btn btn-primary">Search by code</button>
+                    <button class="btn btn-secondary">Search by title</button>
+                    <button class="btn btn-success">Clear</button>
+                </div>
+            </div>
+
             <h1>SIT223-SIT753 - Professional Practice in IT</h1>
             <h2>Unit details</h2>
 

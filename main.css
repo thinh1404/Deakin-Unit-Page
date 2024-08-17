@@ -7,3 +7,28 @@ img.logo {
   width: 10em;
   height: auto;
 }
+
+.unit-search {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  background-color: aliceblue;
+  padding: 1.5em;
+}
+
+.form-group {
+  margin-bottom: 0.5em;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.btn-search {
+  margin-top: 1.5em;
+  cursor: pointer;
+}
+
+.btn-search .btn {
+  margin-right: 10px; /* Adjust the value to control the gap */
+}
