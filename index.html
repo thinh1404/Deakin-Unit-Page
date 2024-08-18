@@ -19,12 +19,7 @@
                     <h2 class="header">Unit Search 2024</h2>
                     <label for="input-unit-code">Unit Code</label>
                     <input type="text" class="form-control" placeholder="Unit code" list="list-unit-code" id="input-unit-code">
-                    <datalist id="list-unit-code">
-                        <option>SIT225</option>
-                        <option>SIT223</option>
-                        <option>SIT307</option>
-                        <option>SIT292</option>
-                    </datalist>
+                    <datalist id="list-unit-code"></datalist>
                 </div>
                 <script>
                     document.addEventListener('DOMContentLoaded', e => {
@@ -34,12 +29,7 @@
                 <div class="form-group">
                     <label class = "form-label" for="input-unit-title"> Unit Title </label>
                     <input type="text" class="form-control" placeholder="Unit title" list="list-unit-title" id="input-unit-title">
-                    <datalist id="list-unit-title">
-                        <option>Data Capture Technologies</option>
-                        <option>Professional Practice in IT</option>
-                        <option>Machine Learning</option>
-                        <option>Linear Algebra for Data Analysis</option>
-                    </datalist>
+                    <datalist id="list-unit-title"></datalist>
                 </div>
                 
                 <div class="form-group">
@@ -83,7 +73,7 @@
                 <table class="table table-striped">
                     <tr>
                         <td>Year:</td>
-                        <td>2023 unit information</td>
+                        <td>2024 unit information</td>
                     </tr>
                     <tr>
                         <td>Enrolment modes:</td>
@@ -91,7 +81,7 @@
                     </tr>
                     <tr>
                         <td>Credit point(s):</td>
-                        <td id="unit-cp">1</td>
+                        <td id="unit-cp"></td>
                     </tr>
                     <tr>
                         <td>Unit Chair:</td>
@@ -128,16 +118,68 @@
             const units = {
                 SIT223: {
                     shortName: 'Professional Practice in IT',
-                    longName: 'SIT223-SIT753 - Professional Practice in IT',
-                    modes: 'Trimester 1: Burwood (Melbourne), Geelong, Cloud (online)',
+                    longName: 'SIT223-SIT753 - Professional Practice in Information Technology',
+                    modes: 'Trimester 1: Burwood (Melbourne), Waurn Ponds (Geelong), Online<br>Trimester 2: Burwood (Melbourne), Online',
                     cp: 1,
-                    chair: 'Trimester 1: Azadeh Ghari Neiat',
-                    acty: '1 x 3 hour active class per week, weekly drop in support.',
-                    content: 'To be successful IT graduates need to understand the use of industry tools and practices, \
-                        the ways these tools work and connect together, and the underlying professional, ethical, \
-                        and teamwork knowledge and skills needed to put these into practice in a professional manner.',
+                    chair: 'Trimester 1: Azadeh Ghari Neiat<br>Trimester 2: Atabak Elmi',
+                    acty: '1 x 3 hour seminar per week, weekly meetings.',
+                    content: 'To be successful IT graduates need to understand the use of industry tools and practices, the ways these \
+                        tools work and connect together, and the underlying professional, ethical, and teamwork knowledge and skills needed \
+                        to put these into practice in a professional manner. This unit introduces students to IT workflows, agile project \
+                        management, dev-ops pipelines, version control, and the ways these tools fit together in modern companies. The use \
+                        of these technologies is underpinned by the behaviours, teamwork, and ethical considerations needed to engage in working \
+                        in IT in a professional manner. The unit will tackle the big issues facing the IT industry with a focus on gender equity \
+                        and diversity, helping ensure our future IT leaders are well placed to address this and other challenging issues.',
                     hurdle: 'To be eligible to obtain a pass in this unit, students must meet certain milestones as part of the portfolio.'
-                }
+                },
+
+                SIT225: {
+                    shortName: 'Data Capture Technologies',
+                    longName: 'SIT225 - Data Capture Technologies',
+                    modes: 'Trimester 2: Burwood (Melbourne), Online',
+                    cp: 1,
+                    chair: 'Trimester 2: Md Ahsan Habib',
+                    acty: '1 x 1 hour online lecture per week, 1 x 3 hour practical experience (workshop) per week, weekly meetings.',
+                    content: 'This unit will introduce students to ubiquitous and readily accessible devices for data capture, such as \
+                        the sensor suite on a mobile smartphone, and those commonly used in homes, vehicles and current examples of \
+                        cyber-physical systems. Students will be introduced to a range of data capture protocols and methodologies. \
+                        Students will use industry-standard approaches for data presentation, visualisation and analysis. Through \
+                        practical investigations and analysis, students will investigate issues of robustness, reliability and validity \
+                        of data and the effects of these on conclusions drawn from data.',
+                    hurdle: 'To be eligible to obtain a pass in this unit, students must meet certain milestones as part of the portfolio.'
+                },
+
+                SIT307: {
+                    shortName: 'Machine Learning',
+                    longName: 'SIT307 - Machine Learning',
+                    modes: 'Trimester 1: Burwood (Melbourne), Online<br>Trimester 2: Burwood (Melbourne), Online',
+                    cp: 1,
+                    chair: 'Trimester 1: Ming Liu<br>Trimester 2: Chandan Karmakar',
+                    acty: '1 x 2 hour online lecture per week, 1 x 2 hour practical experience (workshop) per week. Weekly meetings.',
+                    content: 'Machine learning is an important tool in analytics, where algorithms iteratively learn from data to uncover \
+                        hidden insights, without being directly programmed on where to find such information. This unit involves students \
+                        exploring machine-learning techniques such as data representation, unsupervised learning (clustering and factor \
+                        analysis) methods, supervised learning (linear and non-linear classification) methods, concepts of suitable model \
+                        complexity for the problem and data at hand. Students will have the opportunity to apply these techniques in solving \
+                        real-world problem scenarios presented to them in the unit.',
+                    hurdle: 'To be eligible to obtain a pass in this unit, students must meet certain milestones as part of the portfolio.'
+                },
+
+                SIT292: {
+                    shortName: 'Linear Algebra for Data Analysis',
+                    longName: 'SIT292 - Linear Algebra for Data Analysis',
+                    modes: 'Trimester 2: Burwood (Melbourne), Online',
+                    cp: 1,
+                    chair: 'Trimester 2: Simon James',
+                    acty: '1 x 3 hour seminar per week, weekly meetings.',
+                    content: 'Linear algebra is the foundation for many sophisticated mathematical and computational methods. In SIT292 \
+                        students will learn the basics of linear algebra, and solve systems of linear equations. This unit extends students \
+                        ability apply mathematical formulae and to operate with complex mathematical objects. SIT292 introduces students to \
+                        vector spaces, matrix theory, systems of linear equations and methods for solving them, eigenvalues and eigenvectors, \
+                        and their application to similarity of diagonal matrices. The techniques that students learn from this unit will enable \
+                        them with the analysis of complex data and ensuring its reliability in studies of cryptography.',
+                    hurdle: 'To be eligible to obtain a pass in this unit, students must meet certain milestones as part of the portfolio.'
+                },
             };
 
             const populateInfo = (data) => {
