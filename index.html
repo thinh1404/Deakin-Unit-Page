@@ -17,8 +17,8 @@
             <div class="unit-search">
                 <div class="form-group">
                     <h2 class="header">Unit Search 2024</h2>
-                    <label for="input-unitlist">Unit Code</label>
-                    <input type="text" class="form-control" placeholder="Unit code" list="list-unit-code" id="input-unit-list">
+                    <label for="input-unit-code">Unit Code</label>
+                    <input type="text" class="form-control" placeholder="Unit code" list="list-unit-code" id="input-unit-code">
                     <datalist id="list-unit-code">
                         <option>SIT225</option>
                         <option>SIT223</option>
@@ -70,58 +70,119 @@
                 </select>
                 </div>
                 <div class="btn-search">
-                    <button class="btn btn-primary">Search by code</button>
-                    <button class="btn btn-secondary">Search by title</button>
-                    <button class="btn btn-success">Clear</button>
+                    <button class="btn btn-primary" onclick="searchCode();">Search by code</button>
+                    <button class="btn btn-secondary" onclick="searchTitle();">Search by title</button>
+                    <button class="btn btn-success" onclick="resetFields();">Clear</button>
                 </div>
             </div>
 
-            <h1>SIT223-SIT753 - Professional Practice in IT</h1>
-            <h2>Unit details</h2>
+            <div id="unit-info" class="d-none">
+                <h1 id="unit-name"></h1>
+                <h2>Unit details</h2>
 
-            <table class="table table-striped">
-                <tr>
-                    <td>Year:</td>
-                    <td>2023 unit information</td>
-                </tr>
-                <tr>
-                    <td>Enrolment modes:</td>
-                    <td>Trimester 1: Burwood (Melbourne), Geelong, Cloud (online)</td>
-                </tr>
-                <tr>
-                    <td>Credit point(s):</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Unit Chair:</td>
-                    <td>Trimester 1: Azadeh Ghari Neiat</td>
-                </tr>
-                <tr>
-                    <td>Scheduled Learning Activities:</td>
-                    <td>1 x 3 hour active class per week, weekly drop in support.</td>
-                </tr>
-            </table>
+                <table class="table table-striped">
+                    <tr>
+                        <td>Year:</td>
+                        <td>2023 unit information</td>
+                    </tr>
+                    <tr>
+                        <td>Enrolment modes:</td>
+                        <td id="unit-modes"></td>
+                    </tr>
+                    <tr>
+                        <td>Credit point(s):</td>
+                        <td id="unit-cp">1</td>
+                    </tr>
+                    <tr>
+                        <td>Unit Chair:</td>
+                        <td id="unit-chair"></td>
+                    </tr>
+                    <tr>
+                        <td>Scheduled Learning Activities:</td>
+                        <td id="unit-acty"></td>
+                    </tr>
+                </table>
 
-            <h3>Content</h3> 
-            <p> 
-                To be successful IT graduates need to understand the use of industry tools and practices,  
-                the ways these tools work and connect together, and the underlying professional, ethical,  
-                and teamwork knowledge and skills needed to put these into practice in a professional manner. 
-            </p> 
-            <a href="https://www.deakin.edu.au/students/enrolment-and-fees/fees">> Current students</a> 
-            
-            <h3>Hurdle requirement</h3> 
-            <p> 
-                To be eligible to obtain a pass in this unit, students must meet certain milestones as part of the portfolio. 
-            </p> 
+                <h3>Content</h3> 
+                <p id="unit-content"></p> 
+                <a href="https://www.deakin.edu.au/students/enrolment-and-fees/fees">> Current students</a> 
+                
+                <h3>Hurdle requirement</h3> 
+                <p id="unit-hurdle"></p>
+            </div>
         </main>
 
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="bootstrap-autocomplete.js"></script>
         <script>
+
+            const resetFields = () => {
+                $('#input-unit-code').val('');
+                $('#input-unit-title').val('');
+            };
+
+            /* MOCK BACKEND */
+
+            /* LIST OF UNITS */
+            const units = {
+                SIT223: {
+                    shortName: 'Professional Practice in IT',
+                    longName: 'SIT223-SIT753 - Professional Practice in IT',
+                    modes: 'Trimester 1: Burwood (Melbourne), Geelong, Cloud (online)',
+                    cp: 1,
+                    chair: 'Trimester 1: Azadeh Ghari Neiat',
+                    acty: '1 x 3 hour active class per week, weekly drop in support.',
+                    content: 'To be successful IT graduates need to understand the use of industry tools and practices, \
+                        the ways these tools work and connect together, and the underlying professional, ethical, \
+                        and teamwork knowledge and skills needed to put these into practice in a professional manner.',
+                    hurdle: 'To be eligible to obtain a pass in this unit, students must meet certain milestones as part of the portfolio.'
+                }
+            };
+
+            const populateInfo = (data) => {
+                $('#unit-name').html(data.longName);
+                $('#unit-modes').html(data.modes);
+                $('#unit-cp').html(data.cp);
+                $('#unit-chair').html(data.chair);
+                $('#unit-acty').html(data.acty);
+                $('#unit-content').html(data.content);
+                $('#unit-hurdle').html(data.hurdle);
+
+                $('#unit-info').removeClass('d-none'); // unhide unit information
+            }
+
+            const searchCode = () => {
+                $('#unit-info').addClass('d-none'); // hide information
+
+                let code = $('#input-unit-code').val().toUpperCase();
+                if(code in units) populateInfo(units[code]);
+            };
+
+            const searchTitle = () => {
+                $('#unit-info').addClass('d-none'); // hide information
+
+                let title = $('#input-unit-title').val().toLowerCase();
+                for(const code in units) {
+                    if(units[code].shortName.toLowerCase() === title) {
+                        populateInfo(units[code]); // we've found the unit
+                        break;
+                    }
+                }
+            };
+
             document.addEventListener('DOMContentLoaded', (e) => {
-                $('#input-unit-list').autocomplete();
+                /* populate unit codes and unit titles */
+                let unitCodes = ''; let unitTitles = '';
+                for(const code in units) {
+                    unitCodes += `<option>${code}</option>\n`;
+                    unitTitles += `<option>${units[code].shortName}</option>\n`;
+                }
+                $('#list-unit-code').html(unitCodes);
+                $('#list-unit-title').html(unitTitles);
+
+                /* start autocomplete */
+                $('#input-unit-code').autocomplete();
                 $('#input-unit-title').autocomplete();
             }, false);
         </script>
